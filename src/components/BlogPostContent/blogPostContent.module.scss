@@ -1,0 +1,69 @@
+.postContainer {
+    width:100%;
+    background-color: #FFFFFF;
+    border-bottom: 4px solid #57bdad;
+    margin: 0 30px;
+    padding: 30px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    transition: all 0.2s linear;
+    .postHeading {
+        font-size: 38px;
+        margin-bottom: 20px;
+        font-family: 'Raleway', sans-serif;
+        font-weight: normal;
+        line-height: inherit;
+        padding-left: 7px;
+    }
+    .postMeta {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        font-family: 'Montserrat Alternates', sans-serif;
+        .author {
+            text-transform: lowercase;
+            padding-left: 10px;
+            margin-right: 20px;
+            color: #999999;
+            font-size: 13px;
+            line-height: 1;
+            .authorName {
+                color: #E74C3C;
+            }
+        }
+        .date {
+            background: url(https://lh6.googleusercontent.com/--Swg3CGdbU8/UcPyAEV2cUI/AAAAAAAAB7M/0eEnNgsMq2c/s16/meta_time.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+            padding-left: 20px;
+            margin-right: 20px;
+            color: #999999;
+            font-size: 13px;
+        }
+        .comments {
+            background: url(https://lh5.googleusercontent.com/-kfxAAytuHik/UcPyAHbhsxI/AAAAAAAAB7E/h9hMrLZPz3g/s16/meta_comment.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+            margin-right: 20px;
+            padding-left: 20px;
+            color: #999999;
+            font-size: 13px;
+        }
+    }
+    .blogPostImageContainer {
+        padding: 10px;
+        margin-bottom: 30px;
+        .blogPostImage{
+            width: 100%;
+        }
+    }
+    .blogPostContent {
+        border: 0px;
+        box-sizing: border-box;
+        color: #272f33;
+        font-family: Ubuntu, sans-serif;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 1.5em;
+        outline: 0px;
+        padding: 0px;
+        vertical-align: baseline;
+        padding-left: 10px;
+    }
+}

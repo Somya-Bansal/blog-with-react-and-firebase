@@ -1,0 +1,78 @@
+.CardContainer {
+    display: flex;
+    flex-direction: column;
+    // flex-basis: 30%;
+    width:30%;
+    margin: 15px;
+    background-color: #FFFFFF;
+    border-bottom: 4px solid #57bdad;
+    .cardImage {
+        img {
+            max-width: 100%;
+            border-radius: 2%;
+        }
+    }
+    .cardText {
+        padding: 15px;
+        .title {
+            padding-bottom: 20px;
+            font-size: 28px;
+            line-height: 40px;
+            font-weight: normal;
+            color: #4B4B4B;
+            font-family: 'Raleway', sans-serif;
+        }
+        :hover {
+            color: #57bdad;
+        }
+        .date {
+            background: url(https://lh6.googleusercontent.com/--Swg3CGdbU8/UcPyAEV2cUI/AAAAAAAAB7M/0eEnNgsMq2c/s16/meta_time.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+            padding-left: 20px;
+            color: #999999;
+            font-size: 13px;
+            line-height: 1;
+            white-space: nowrap;
+            font-family: 'Montserrat Alternates', sans-serif;
+            padding: 25px;
+            border-bottom: dashed #999999 1px;
+        }
+        .previewText {
+            padding: 25px 5px;
+            p {
+                margin-bottom: 10px;
+                font-family: 'Oxygen', sans-serif;
+                font-weight: 400;
+                color: #4e4d4d;
+                font-size: 14px;
+                line-height: 28px;
+            }
+        }
+        .readMore {
+            font-size: 13px;
+            color: #57BDAD;
+            margin-left: 5px;
+        }
+        .authorInfo {
+            display: flex;
+            // justify-content: space-evenly;
+            align-items: center;
+            padding-top: 20px;
+            .authorImg {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                img {
+                    width: 100%;
+                }
+            }
+            .authorName {
+                padding: 6px 10px 10px 8px;
+                font-family: 'Montserrat Alternates', sans-serif;
+                text-transform: lowercase;
+                a {
+                    color: #57bdad;
+                }
+            }
+        }
+    }
+}

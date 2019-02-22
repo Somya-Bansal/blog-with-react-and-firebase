@@ -2,13 +2,11 @@ import React, { Component } from "react"
 import * as firebase from "firebase";
 import firebaseConfig from "./firebase-config"
 
-// import React from "react"
 
-// import Layout from "../components/layout"
-// import AuthorInfo from "../components/authorInfo"
-// import BlogCardContainer from "../components/blogCardContainer"
-
-// import firebase from "firebase"
+import "./globalStyles.scss"
+import Layout from "../../components/Layout/layout"
+import AuthorInfo from "../../components/AuthorInfo/authorInfo"
+import BlogCardContainer from "../../containers/BlogCardContainer/blogCardContainer"
 
 class App extends Component {
     constructor (){
@@ -29,9 +27,10 @@ class App extends Component {
     }
     render () {
         return (
-            <div>
-                Hello World!
-            </div>
+            <Layout>
+                <AuthorInfo></AuthorInfo>
+                <BlogCardContainer></BlogCardContainer>
+            </Layout>
         );
     }
 }

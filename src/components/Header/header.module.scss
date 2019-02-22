@@ -1,0 +1,20 @@
+.headerMain {
+    padding: 4px 0 4px;
+    width: 100%;
+    z-index: 999;
+    background: #383636;
+    -webkit-transition: all 0.8s ease 0s;
+
+    ul.navList {
+        display: flex;
+        justify-content: center;
+    }
+    .navListItem {
+        padding: 20px;
+        a{
+            font-family: 'Ubuntu', sans-serif;
+            font-size: 18px;
+            color: #fff;
+        }
+    }
+}
