@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import * as firebase from "firebase";
-import firebaseConfig from "./firebase-config"
+import firebaseConfig from "../../config/firebase-config"
 
 
 import "./globalStyles.scss"
@@ -15,6 +15,14 @@ class App extends Component {
     }
     componentWillMount(){
         let postRef = firebase.database().ref('posts') 
+
+        const userRef = firebase.database().ref('users');
+        const item = {
+            username: "sobansal",
+            email: "sobansal@domain.com",
+          }
+        userRef.push(item);
+        
         let _this = this;
         postRef.on('value', function(snapshot) {
         console.log(snapshot.val());
@@ -35,8 +43,3 @@ class App extends Component {
     }
 }
 export default App;
-
-// {/* <Layout>
-//     <AuthorInfo></AuthorInfo>
-//     <BlogCardContainer></BlogCardContainer>
-// </Layout> */}
