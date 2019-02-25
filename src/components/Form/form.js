@@ -22,14 +22,14 @@ class Form extends Component {
     handleSubmit(e){
         e.preventDefault();
 
-        // const postsRef = firebase.database().ref('posts');
-        // const post = {
-        //     title: this.state.title,
-        //     body: this.state.body,
-        //     authorName: this.state.authorName,
-        //     authorEmail: this.state.authorEmail
-        // }
-        // postsRef.push(post);
+        const postsRef = this.props.db.database().ref('posts');
+        const post = {
+            title: this.state.title,
+            body: this.state.body,
+            authorName: this.state.authorName,
+            authorEmail: this.state.authorEmail
+        }
+        postsRef.push(post);
 
         this.setState({
             title: '',

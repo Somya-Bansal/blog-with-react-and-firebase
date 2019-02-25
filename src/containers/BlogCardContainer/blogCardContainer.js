@@ -8,8 +8,6 @@ class BlogCardContainer extends React.Component {
         return (
             <div className={styles.container}>
                 <BlogCard></BlogCard>
-                <BlogCard></BlogCard>
-                <BlogCard></BlogCard>
             </div>
         );
     }

@@ -14,32 +14,12 @@ class App extends Component {
         super();
         firebase.initializeApp(firebaseConfig);
     }
-    // componentWillMount(){
-    //     let postRef = firebase.database().ref('posts') 
-
-    //     const userRef = firebase.database().ref('users');
-    //     const item = {
-    //         username: "sobansal",
-    //         email: "sobansal@domain.com",
-    //       }
-    //     userRef.push(item);
-        
-    //     let _this = this;
-    //     postRef.on('value', function(snapshot) {
-    //     console.log(snapshot.val());
-    //     _this.setState({
-    //         posts: snapshot.val(),
-    //         loading: false
-    //         });
-    //         });
-
-    // }
     render () {
         return (
             <Layout>
                 <AuthorInfo></AuthorInfo>
-                <Form></Form>
-                <BlogCardContainer></BlogCardContainer>
+                <Form db={firebase}></Form>
+                <BlogCardContainer db={firebase}></BlogCardContainer>
             </Layout>
         );
     }
