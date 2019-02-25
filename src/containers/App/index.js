@@ -14,26 +14,26 @@ class App extends Component {
         super();
         firebase.initializeApp(firebaseConfig);
     }
-    componentWillMount(){
-        let postRef = firebase.database().ref('posts') 
+    // componentWillMount(){
+    //     let postRef = firebase.database().ref('posts') 
 
-        const userRef = firebase.database().ref('users');
-        const item = {
-            username: "sobansal",
-            email: "sobansal@domain.com",
-          }
-        userRef.push(item);
+    //     const userRef = firebase.database().ref('users');
+    //     const item = {
+    //         username: "sobansal",
+    //         email: "sobansal@domain.com",
+    //       }
+    //     userRef.push(item);
         
-        let _this = this;
-        postRef.on('value', function(snapshot) {
-        console.log(snapshot.val());
-        _this.setState({
-            posts: snapshot.val(),
-            loading: false
-            });
-            });
+    //     let _this = this;
+    //     postRef.on('value', function(snapshot) {
+    //     console.log(snapshot.val());
+    //     _this.setState({
+    //         posts: snapshot.val(),
+    //         loading: false
+    //         });
+    //         });
 
-    }
+    // }
     render () {
         return (
             <Layout>

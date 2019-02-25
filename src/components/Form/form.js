@@ -3,14 +3,70 @@ import React, { Component } from "react"
 import styles from "./form.module.scss"
 
 class Form extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            title: '',
+            body: '',
+            authorName: '',
+            authorEmail: ''
+        }
+        this.handleChangeField = this.handleChangeField.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChangeField(key, event){
+        this.setState({
+            [key]: event.target.value
+        });
+    }
+    handleSubmit(e){
+        e.preventDefault();
+
+        // const postsRef = firebase.database().ref('posts');
+        // const post = {
+        //     title: this.state.title,
+        //     body: this.state.body,
+        //     authorName: this.state.authorName,
+        //     authorEmail: this.state.authorEmail
+        // }
+        // postsRef.push(post);
+
+        this.setState({
+            title: '',
+            body: '',
+            authorName: '',
+            authorEmail: ''
+        });
+    }
     render () {
+        const {title, body, authorName, authorEmail} = this.state;
         return(
             <div className={styles.articleInput}>
-                <input className={styles.title} placeholder="Article Title"></input>
-                <textarea className={styles.articleContent} placeholder="Content"></textarea>
-                <input className={styles.authorName} placeholder="Author Name"></input>
-                <input className={styles.authorEmail} placeholder="Author Email Id"></input>
-                <button className={styles.articleSubmit}>Submit</button>
+                <input 
+                    onChange={(ev) => this.handleChangeField('title', ev)}
+                    value={title}
+                    className={styles.title} 
+                    placeholder="Article Title"
+                ></input>
+                <textarea
+                    onChange={(ev) => this.handleChangeField('body', ev)}
+                    value={body} 
+                    className={styles.articleContent}
+                    placeholder="Content"
+                ></textarea>
+                <input
+                    onChange={(ev) => this.handleChangeField('authorName', ev)}
+                    value={authorName} 
+                    className={styles.authorName} 
+                    placeholder="Author Name"
+                ></input>
+                <input
+                    onChange={(ev) => this.handleChangeField('authorEmail', ev)}
+                    value={authorEmail}
+                    className={styles.authorEmail}
+                    placeholder="Author Email Id"
+                ></input>
+                <button onClick={this.handleSubmit} className={styles.articleSubmit}>Add Post</button>
             </div>
         );
     }
