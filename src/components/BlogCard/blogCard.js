@@ -16,21 +16,21 @@ class BlogCard extends React.Component {
                     <div>
                         <h2>
                             <a href="/blogPostPage/" className={styles.title}>
-                                Wait!
-                                    </a>
+                                {this.props.title}
+                            </a>
                         </h2>
                     </div>
                     <div className={styles.date}>Thursday, November 13, 2014</div>
                     <div className={styles.previewText}>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec.
-                                </p>
+                            {this.props.body}
+                        </p>
                     </div>
                     <a href="/blogPostPage/" className={styles.readMore}>Read More ></a>
                     <div className={styles.authorInfo}>
                         <img src={myPic} alt="" className={styles.authorImg}></img>
                         <p className={styles.authorName}>
-                            by <a href="/about/">Somya Bansal</a>
+                            by <a href="/about/">{this.props.author}</a>
                         </p>
                     </div>
                 </div>
