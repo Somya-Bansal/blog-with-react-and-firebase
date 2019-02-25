@@ -9,6 +9,8 @@ class BlogPost extends React.Component {
         return (
             <div className={styles.leftContainer}>
                 <BlogPostContent></BlogPostContent>
+                {/* <BlogPostContent postState={this.props.postState}></BlogPostContent> */}
+
                 {/* <CommentsContainer></CommentsContainer> */}
             </div>
         );

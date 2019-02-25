@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-import * as firebase from "firebase";
-import firebaseConfig from "../../config/firebase-config"
+import firebase from "../../config/firebase";
 
 
 import "./globalStyles.scss"
@@ -10,10 +9,6 @@ import BlogCardContainer from "../../containers/BlogCardContainer/blogCardContai
 import Form from "../../components/Form/form"
 
 class App extends Component {
-    constructor (){
-        super();
-        firebase.initializeApp(firebaseConfig);
-    }
     render () {
         return (
             <Layout>

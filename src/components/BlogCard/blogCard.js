@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router"
 
 import styles from "./blogCard.module.scss"
 import myPic from "../../images/my-pic.jpg"
@@ -15,9 +16,20 @@ class BlogCard extends React.Component {
                 <div className={styles.cardText}>
                     <div>
                         <h2>
-                            <a href="/blogPostPage/" className={styles.title}>
-                                {this.props.title}
-                            </a>
+                                    {/* state: {
+                                        id: this.props.cardState,
+                                        title: this.props.cardState.title,
+                                        body: this.props.cardState.body,
+                                        authorName: this.props.cardState.authorName
+                                    } */}
+                            <Link 
+                                to={{
+                                    pathname:'/blogPostPage',
+                                }}
+                                className={styles.title}
+                            >
+                                    {this.props.title}
+                            </Link>
                         </h2>
                     </div>
                     <div className={styles.date}>Thursday, November 13, 2014</div>
