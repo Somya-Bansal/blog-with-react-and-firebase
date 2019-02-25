@@ -16,15 +16,14 @@ class BlogCard extends React.Component {
                 <div className={styles.cardText}>
                     <div>
                         <h2>
-                                    {/* state: {
-                                        id: this.props.cardState,
-                                        title: this.props.cardState.title,
-                                        body: this.props.cardState.body,
-                                        authorName: this.props.cardState.authorName
-                                    } */}
                             <Link 
                                 to={{
                                     pathname:'/blogPostPage',
+                                    state: {
+                                        title: this.props.cardState.title,
+                                        body: this.props.cardState.body,
+                                        authorName: this.props.cardState.authorName
+                                    }
                                 }}
                                 className={styles.title}
                             >
@@ -38,7 +37,19 @@ class BlogCard extends React.Component {
                             {this.props.body}
                         </p>
                     </div>
-                    <a href="/blogPostPage/" className={styles.readMore}>Read More ></a>
+                    <Link 
+                        to={{
+                            pathname:'/blogPostPage',
+                            state: {
+                                title: this.props.cardState.title,
+                                body: this.props.cardState.body,
+                                authorName: this.props.cardState.authorName
+                            }
+                        }}
+                        className={styles.readMore}
+                    >
+                    Read More >
+                    </Link>
                     <div className={styles.authorInfo}>
                         <img src={myPic} alt="" className={styles.authorImg}></img>
                         <p className={styles.authorName}>

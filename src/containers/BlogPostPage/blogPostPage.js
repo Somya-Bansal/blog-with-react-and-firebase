@@ -10,9 +10,8 @@ class BlogPostPage extends React.Component {
         return (
             <Layout>
                 <div className={styles.blogPostPage}>
-                    {/* {this.props.location.state.title} */}
-                    {/* <BlogPost postState={this.props.location.state}> */}
-                    <BlogPost></BlogPost>
+                    <BlogPost postState={this.props.location.state}>
+                    </BlogPost>
                     {/* <Sidebar></Sidebar> */}
                 </div>
             </Layout>

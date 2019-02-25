@@ -8,15 +8,13 @@ class BlogPostContent extends React.Component {
         return (
             <div className={styles.postContainer}>
                 <h1 className={styles.postHeading}>
-                    {/* {this.props.postState.title} */}
-                    Title!!!
+                    {this.props.postState.title}
                     </h1>
                 <div className={styles.postMeta}>
                     <div className={styles.author}>
                         <span>by </span>
                         <span className={styles.authorName}>
-                            {/* {this.props.postState.authorName} */}
-                            Author Name!!!
+                            {this.props.postState.authorName}
                         </span>
                     </div>
                     <div className={styles.date}>
@@ -30,8 +28,7 @@ class BlogPostContent extends React.Component {
                     <img className={styles.blogPostImage} alt="" src={blogPic}></img>
                 </div>
                 <div className={styles.blogPostContent}>
-                    {/* {this.props.postState.body} */}
-                    Post!!!
+                    {this.props.postState.body}
                 </div>
             </div>
         );
