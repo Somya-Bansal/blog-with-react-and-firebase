@@ -22,6 +22,7 @@ class BlogCardContainer extends React.Component {
                     body: posts[post].body,
                     authorName: posts[post].authorName,
                     authorEmail: posts[post].authorEmail,
+                    publishDate: posts[post].publishDate
                 });
             }
             this.setState({
@@ -34,7 +35,7 @@ class BlogCardContainer extends React.Component {
             <div className={styles.container}>
                 {this.state.blogPosts.map((blogPost) => {
                     return(
-                        <BlogCard key={blogPost.id} title={blogPost.title} body={blogPost.body} author={blogPost.authorName} cardState={blogPost}></BlogCard>
+                        <BlogCard key={blogPost.id} cardState={blogPost}></BlogCard>
                     )
                 })}
             </div>

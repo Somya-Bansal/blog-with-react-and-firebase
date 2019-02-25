@@ -22,19 +22,20 @@ class BlogCard extends React.Component {
                                     state: {
                                         title: this.props.cardState.title,
                                         body: this.props.cardState.body,
-                                        authorName: this.props.cardState.authorName
+                                        authorName: this.props.cardState.authorName,
+                                        publishDate: this.props.cardState.publishDate
                                     }
                                 }}
                                 className={styles.title}
                             >
-                                    {this.props.title}
+                                    {this.props.cardState.title}
                             </Link>
                         </h2>
                     </div>
-                    <div className={styles.date}>Thursday, November 13, 2014</div>
+                    <div className={styles.date}>{this.props.cardState.publishDate}</div>
                     <div className={styles.previewText}>
                         <p>
-                            {this.props.body}
+                            {this.props.cardState.body}
                         </p>
                     </div>
                     <Link 
@@ -43,7 +44,8 @@ class BlogCard extends React.Component {
                             state: {
                                 title: this.props.cardState.title,
                                 body: this.props.cardState.body,
-                                authorName: this.props.cardState.authorName
+                                authorName: this.props.cardState.authorName,
+                                publishDate: this.props.cardState.publishDate
                             }
                         }}
                         className={styles.readMore}
@@ -53,7 +55,7 @@ class BlogCard extends React.Component {
                     <div className={styles.authorInfo}>
                         <img src={myPic} alt="" className={styles.authorImg}></img>
                         <p className={styles.authorName}>
-                            by <a href="/about/">{this.props.author}</a>
+                            by <Link to="/about">{this.props.cardState.author}</Link>
                         </p>
                     </div>
                 </div>

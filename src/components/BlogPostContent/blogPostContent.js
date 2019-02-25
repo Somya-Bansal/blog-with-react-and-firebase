@@ -18,7 +18,7 @@ class BlogPostContent extends React.Component {
                         </span>
                     </div>
                     <div className={styles.date}>
-                        Thursday, November 13, 2014
+                        {this.props.postState.publishDate}
                         </div>
                     <div className={styles.comments}>
                         0 comments
