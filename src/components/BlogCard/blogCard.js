@@ -55,7 +55,7 @@ class BlogCard extends React.Component {
                     <div className={styles.authorInfo}>
                         <img src={myPic} alt="" className={styles.authorImg}></img>
                         <p className={styles.authorName}>
-                            by <Link to="/about">{this.props.cardState.author}</Link>
+                            by <Link to="/about">{this.props.cardState.authorName}</Link>
                         </p>
                     </div>
                 </div>
