@@ -14,7 +14,7 @@ class BlogCard extends React.Component {
                     <img alt="" src={blogPic}></img>
                 </div>
                 <div className={styles.cardText}>
-                    <div>
+                    <div className={styles.title}>
                         <h2>
                             <Link 
                                 to={{
@@ -35,7 +35,7 @@ class BlogCard extends React.Component {
                     <div className={styles.date}>{this.props.cardState.publishDate}</div>
                     <div className={styles.previewText}>
                         <p>
-                            {this.props.cardState.body}
+                            {(this.props.cardState.body).substring(0,200)}...
                         </p>
                     </div>
                     <Link 

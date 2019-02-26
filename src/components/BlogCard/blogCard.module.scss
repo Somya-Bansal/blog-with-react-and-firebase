@@ -14,6 +14,10 @@
     }
     .cardText {
         padding: 15px;
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        flex-direction: column;
         .title {
             padding-bottom: 20px;
             font-size: 28px;
@@ -27,17 +31,16 @@
         }
         .date {
             background: url(https://lh6.googleusercontent.com/--Swg3CGdbU8/UcPyAEV2cUI/AAAAAAAAB7M/0eEnNgsMq2c/s16/meta_time.png) no-repeat scroll left center rgba(0, 0, 0, 0);
-            padding-left: 20px;
+            padding: 10px 25px;
             color: #999999;
             font-size: 13px;
             line-height: 1;
             white-space: nowrap;
             font-family: 'Montserrat Alternates', sans-serif;
-            padding: 25px;
             border-bottom: dashed #999999 1px;
         }
         .previewText {
-            padding: 25px 5px;
+            padding: 25px 5px 10px 5px;
             p {
                 margin-bottom: 10px;
                 font-family: 'Oxygen', sans-serif;
