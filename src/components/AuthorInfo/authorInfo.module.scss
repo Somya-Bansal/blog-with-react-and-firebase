@@ -1,28 +1,32 @@
 .AuthorInfoContainer {
-    width: 800px;
-    margin: 25px auto;
+    width: 900px;
+    margin: 10px auto;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     border-bottom: 4px solid #75C3B7;
-    .authorInfo {
+    .author {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .authorImage {
-            img {
-                border-radius: 100%;
-                width: 100px;
-                height: 100px;
-                object-fit: cover;
+        .authorInfo{
+            display: flex;
+            align-items: center;
+            .authorImage {
+                img {
+                    border-radius: 100%;
+                    width: 100px;
+                    height: 100px;
+                    object-fit: cover;
+                }
             }
-        }
-        .authorTitle {
-            font-family: 'Raleway', sans-serif;
-            font-size: 24px;
-            padding: 8px 10px;
-            color: #57BCAC;
-            font-weight: 600;
+            .authorTitle {
+                font-family: 'Raleway', sans-serif;
+                font-size: 24px;
+                padding: 8px 10px;
+                color: #57BCAC;
+                font-weight: 600;
+            }
         }
     }
 }
