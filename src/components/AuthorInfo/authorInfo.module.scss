@@ -1,40 +1,28 @@
 .AuthorInfoContainer {
-    width: 1150px;
+    width: 800px;
     margin: 25px auto;
-    padding: 15px;
     background-position: center center;
-    background-color: #fafafa;
     background-repeat: no-repeat;
     background-attachment: fixed;
     border-bottom: 4px solid #75C3B7;
     .authorInfo {
-        margin: 10px 20px;
-        padding: 20px;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         .authorImage {
-            background-color: rgba(255, 255, 255, 0.34);
-            padding: 10px;
             img {
                 border-radius: 100%;
-                width: 130px;
+                width: 100px;
+                height: 100px;
                 object-fit: cover;
             }
         }
-        .authorText{
-            flex-basis: 75%;
-            text-align: center;
-            .authorTextTitle {
-                font-family: 'Raleway', sans-serif;
-                font-size: 24px;
-                padding: 8px 10px;
-                color: #57BCAC;
-                font-weight: 600;
-                .authorTextDesc {
-                    font-family: 'Oxygen', sans-serif;
-                    color: #423F3F;
-                }
-            }
+        .authorTitle {
+            font-family: 'Raleway', sans-serif;
+            font-size: 24px;
+            padding: 8px 10px;
+            color: #57BCAC;
+            font-weight: 600;
         }
     }
 }

@@ -2,6 +2,8 @@ import React from "react"
 
 import styles from "./authorInfo.module.scss"
 import myPic from "../../images/my-pic.jpg"
+import Button from "../../components/Button/button"
+
 
 class AuthorInfo extends React.Component {
     render () {
@@ -11,14 +13,10 @@ class AuthorInfo extends React.Component {
                     <div className={styles.authorImage}>
                         <img src={myPic} alt=""></img>
                     </div>
-                    <div className={styles.authorText}>
-                        <h2 className={styles.authorTextTitle}>
-                            Somya Bansal
-                        </h2>
-                        <p className={styles.authorTextDesc}>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-                        </p>
-                    </div>
+                    <h2 className={styles.authorTitle}>
+                        Somya Bansal
+                    </h2>
+                    <Button onClickHandle={this.props.logoutHandle}>Logout</Button>
                 </div>
                 <div>
 

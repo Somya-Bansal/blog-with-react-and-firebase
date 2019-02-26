@@ -46,6 +46,7 @@ class Form extends Component {
         const {title, body, authorName, authorEmail} = this.state;
         return(
             <div className={styles.articleInput}>
+                <h2>Add a blog Post!</h2>
                 <input 
                     onChange={(ev) => this.handleChangeField('title', ev)}
                     value={title}

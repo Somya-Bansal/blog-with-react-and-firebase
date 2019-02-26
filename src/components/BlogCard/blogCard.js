@@ -14,6 +14,7 @@ class BlogCard extends React.Component {
                     <img alt="" src={blogPic}></img>
                 </div>
                 <div className={styles.cardText}>
+                    <div className={styles.category}>Category</div>
                     <div className={styles.title}>
                         <h2>
                             <Link 
