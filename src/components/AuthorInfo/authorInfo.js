@@ -1,7 +1,6 @@
 import React from "react"
 
 import styles from "./authorInfo.module.scss"
-import myPic from "../../images/my-pic.jpg"
 import Button from "../../components/Button/button"
 
 
@@ -12,10 +11,10 @@ class AuthorInfo extends React.Component {
                 <div className={styles.author}>
                     <div className={styles.authorInfo}>
                         <div className={styles.authorImage}>
-                            <img src={myPic} alt=""></img>
+                            <img src={this.props.userImg} alt=""></img>
                         </div>
                         <h2 className={styles.authorTitle}>
-                            Somya Bansal
+                            {this.props.userName}
                         </h2>
                     </div>
                     <Button onClickHandle={this.props.logoutHandle}>Logout</Button>

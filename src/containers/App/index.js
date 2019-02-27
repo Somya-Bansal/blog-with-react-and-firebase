@@ -19,35 +19,37 @@ class App extends Component {
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
     }
+    componentDidMount() {
+        auth.onAuthStateChanged((user) => {
+        //   if (user) {
+            this.setState({ user });
+        //   } 
+        });
+    }
     login() {
         auth.signInWithPopup(provider) 
-          .then((result) => {
-            const user = result.user;
-            this.setState({
-              user
-            });
-          });
+        //   .then((result) => {
+            // const user = result.user;
+            // this.setState({
+            //   user
+            // });
+        //   });
       }
       logout() {
         auth.signOut()
-        .then(() => {
-          this.setState({
-            user: null
-          });
-        });
+        // .then(() => {
+        //   this.setState({
+        //     user: null
+        //   });
+        // });
       }
     render () {
         return (
             <Layout>
-                {/* {this.state.user ?
-                    <Button onClickHandle={this.logout}>Logout</Button>
-                    :
-                    <Button onClickHandle={this.login}>Login</Button>
-                } */}
                 {this.state.user ?
                     <>
-                        <AuthorInfo logoutHandle={this.logout}></AuthorInfo>
-                        <Form db={firebase}></Form>
+                        <AuthorInfo logoutHandle={this.logout} userImg={this.state.user.photoURL} userName={this.state.user.displayName}></AuthorInfo>
+                        <Form db={firebase} userName={this.state.user.displayName} userEmail={this.state.user.email}></Form>
                     </>
                     :
                     <NeedLogin loginHandle={this.login}></NeedLogin>

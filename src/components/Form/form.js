@@ -29,7 +29,7 @@ class Form extends Component {
             title: this.state.title,
             body: this.state.body,
             authorName: this.state.authorName,
-            authorEmail: this.state.authorEmail,
+            authorEmail: this.props.userEmail,
             publishDate: today
         }
         postsRef.push(post);
@@ -43,7 +43,7 @@ class Form extends Component {
         });
     }
     render () {
-        const {title, body, authorName, authorEmail} = this.state;
+        const {title, body, authorName} = this.state;
         return(
             <div className={styles.articleInput}>
                 <h2>Add a blog Post!</h2>
@@ -66,8 +66,7 @@ class Form extends Component {
                     placeholder="Author Name"
                 ></input>
                 <input
-                    onChange={(ev) => this.handleChangeField('authorEmail', ev)}
-                    value={authorEmail}
+                    value={this.props.userEmail}
                     type="email"
                     className={styles.authorEmail}
                     placeholder="Author Email Id"
