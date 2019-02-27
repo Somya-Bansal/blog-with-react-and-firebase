@@ -4,6 +4,7 @@ import BlogCard from "../../components/BlogCard/blogCard"
 import styles from "./blogCardContainer.module.scss"
 
 class BlogCardContainer extends React.Component {
+    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -11,6 +12,7 @@ class BlogCardContainer extends React.Component {
         }
     }
     componentDidMount() {
+        this._isMounted = true;
         const postsRef = this.props.db.database().ref('posts');
         postsRef.on('value', (snapshot) => {
             let posts = snapshot.val();
@@ -26,10 +28,15 @@ class BlogCardContainer extends React.Component {
                     publishDate: posts[post].publishDate
                 });
             }
-            this.setState({
-                blogPosts: newblogPosts
-            });
+            if(this._isMounted){
+                this.setState({
+                    blogPosts: newblogPosts
+                });
+            }
         });
+    }
+    componentWillUnmount() {
+        this._isMounted = false;
     }
     render () {
         return (
