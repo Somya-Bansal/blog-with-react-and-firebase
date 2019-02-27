@@ -10,6 +10,7 @@ class Form extends Component {
             body: '',
             authorName: '',
             authorEmail: '',
+            authorImg: '',
             publishDate: ''
         }
         this.handleChangeField = this.handleChangeField.bind(this);
@@ -21,7 +22,6 @@ class Form extends Component {
         });
     }
     handleSubmit(e){
-        e.preventDefault();
         let today = (new Date()).toDateString();
 
         const postsRef = this.props.db.database().ref('posts');
@@ -29,7 +29,8 @@ class Form extends Component {
             title: this.state.title,
             body: this.state.body,
             authorName: this.state.authorName,
-            authorEmail: this.props.userEmail,
+            authorEmail: this.props.user.email,
+            authorImg: this.props.user.photoURL,
             publishDate: today
         }
         postsRef.push(post);
@@ -39,6 +40,7 @@ class Form extends Component {
             body: '',
             authorName: '',
             authorEmail: '',
+            authorImg: '',
             publishDate: ''
         });
     }
@@ -66,7 +68,7 @@ class Form extends Component {
                     placeholder="Author Name"
                 ></input>
                 <input
-                    value={this.props.userEmail}
+                    value={this.props.user.email}
                     type="email"
                     className={styles.authorEmail}
                     placeholder="Author Email Id"

@@ -11,10 +11,10 @@ class AuthorInfo extends React.Component {
                 <div className={styles.author}>
                     <div className={styles.authorInfo}>
                         <div className={styles.authorImage}>
-                            <img src={this.props.userImg} alt=""></img>
+                            <img src={this.props.user.photoURL} alt=""></img>
                         </div>
                         <h2 className={styles.authorTitle}>
-                            {this.props.userName}
+                            {this.props.user.displayName}
                         </h2>
                     </div>
                     <Button onClickHandle={this.props.logoutHandle}>Logout</Button>

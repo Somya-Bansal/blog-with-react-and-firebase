@@ -24,7 +24,8 @@ class BlogCard extends React.Component {
                                         title: this.props.cardState.title,
                                         body: this.props.cardState.body,
                                         authorName: this.props.cardState.authorName,
-                                        publishDate: this.props.cardState.publishDate
+                                        publishDate: this.props.cardState.publishDate,
+                                        authorImg: this.props.cardState.authorImg
                                     }
                                 }}
                                 className={styles.title}
@@ -46,7 +47,8 @@ class BlogCard extends React.Component {
                                 title: this.props.cardState.title,
                                 body: this.props.cardState.body,
                                 authorName: this.props.cardState.authorName,
-                                publishDate: this.props.cardState.publishDate
+                                publishDate: this.props.cardState.publishDate,
+                                authorImg: this.props.cardState.authorImg
                             }
                         }}
                         className={styles.readMore}
@@ -54,7 +56,7 @@ class BlogCard extends React.Component {
                     Read More >
                     </Link>
                     <div className={styles.authorInfo}>
-                        {/* <img src={this.props.userImg} alt="" className={styles.authorImg}></img> */}
+                        <img src={this.props.cardState.authorImg} alt="" className={styles.authorImg}></img>
                         <p className={styles.authorName}>
                             by <Link to="/about">{this.props.cardState.authorName}</Link>
                         </p>

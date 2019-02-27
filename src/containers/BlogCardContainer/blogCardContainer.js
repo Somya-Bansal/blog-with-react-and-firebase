@@ -22,6 +22,7 @@ class BlogCardContainer extends React.Component {
                     body: posts[post].body,
                     authorName: posts[post].authorName,
                     authorEmail: posts[post].authorEmail,
+                    authorImg: posts[post].authorImg,
                     publishDate: posts[post].publishDate
                 });
             }

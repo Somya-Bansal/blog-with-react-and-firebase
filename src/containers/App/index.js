@@ -21,35 +21,45 @@ class App extends Component {
     }
     componentDidMount() {
         auth.onAuthStateChanged((user) => {
-        //   if (user) {
+          if (user) {
             this.setState({ user });
-        //   } 
+          } 
         });
+    }
+    writeUserData = (userId, userName, userEmail, userImg ) => {
+        const userRef = firebase.database().ref('users/' + userId);
+        userRef.set({
+            username: userName,
+            email: userEmail,
+            profilePicture: userImg
+        })
     }
     login() {
         auth.signInWithPopup(provider) 
-        //   .then((result) => {
-            // const user = result.user;
-            // this.setState({
-            //   user
-            // });
-        //   });
+          .then((result) => {
+            const user = result.user;
+            this.writeUserData(user.uid, user.displayName, user.email, user.photoURL);
+            this.setState({
+              user
+            });
+          });
       }
       logout() {
         auth.signOut()
-        // .then(() => {
-        //   this.setState({
-        //     user: null
-        //   });
-        // });
+        .then(() => {
+          this.setState({
+            user: null
+          });
+        });
       }
     render () {
         return (
             <Layout>
+            {/* userImg={this.state.user.photoURL} userName={this.state.user.displayName} */}
                 {this.state.user ?
                     <>
-                        <AuthorInfo logoutHandle={this.logout} userImg={this.state.user.photoURL} userName={this.state.user.displayName}></AuthorInfo>
-                        <Form db={firebase} userName={this.state.user.displayName} userEmail={this.state.user.email}></Form>
+                        <AuthorInfo logoutHandle={this.logout} user={this.state.user}></AuthorInfo>
+                        <Form db={firebase} user={this.state.user}></Form>
                     </>
                     :
                     <NeedLogin loginHandle={this.login}></NeedLogin>
