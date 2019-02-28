@@ -22,7 +22,9 @@ class App extends Component {
     componentDidMount() {
         auth.onAuthStateChanged((user) => {
           if (user) {
-            this.setState({ user });
+            // this.setState({ user });
+            this.writeUserData(user.uid, user.displayName, user.email, user.photoURL);
+            this.setState({user});
           } 
         });
     }
@@ -36,13 +38,9 @@ class App extends Component {
     }
     login() {
         auth.signInWithPopup(provider) 
-          .then((result) => {
-            const user = result.user;
-            this.writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-            this.setState({
-              user
-            });
-          });
+        //   .then((result) => {
+            // const user = result.user;
+        //   });
       }
       logout() {
         auth.signOut()

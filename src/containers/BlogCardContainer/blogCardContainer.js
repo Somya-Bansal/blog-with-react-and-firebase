@@ -12,10 +12,9 @@ class BlogCardContainer extends React.Component {
         }
     }
     componentDidMount() {
-        console.log("card Container Mounted");//////callled when logged out
         this._isMounted = true;
         const postsRef = this.props.db.database().ref('posts');
-        postsRef.on('value', (snapshot) => {
+        postsRef.on("value", (snapshot) => {
             let posts = snapshot.val();
             let newblogPosts = [];
             for (let post in posts) {
@@ -29,22 +28,22 @@ class BlogCardContainer extends React.Component {
                     publishDate: posts[post].publishDate
                 });
             }
-            console.log("are you gonna setState? " + this._isMounted);//////Not called when logged out
             if(this._isMounted){
                 this.setState({
                     blogPosts: newblogPosts
                 });
             }
-        });
+        }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+          }
+        );
     }
     componentWillUnmount() {
         this._isMounted = false;
-        console.log("Card Component Unmounted");
     }
     render () {
         return (
             <div className={styles.container}>
-                {console.log(this._isMounted)}
                 {this.state.blogPosts.map((blogPost) => {
                     return(
                         <BlogCard key={blogPost.id} cardState={blogPost}></BlogCard>
