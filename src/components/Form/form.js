@@ -72,6 +72,7 @@ class Form extends Component {
                     type="email"
                     className={styles.authorEmail}
                     placeholder="Author Email Id"
+                    readOnly
                 ></input>
                 <button onClick={this.handleSubmit} className={styles.articleSubmit}>Add Post</button>
             </div>

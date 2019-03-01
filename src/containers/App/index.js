@@ -1,6 +1,5 @@
 import React, { Component } from "react"
-import firebase, { auth, provider } from "../../config/firebase";
-
+import firebase, { auth, provider } from "../../config/firebase"
 
 import "./globalStyles.scss"
 import Layout from "../../components/Layout/layout"
@@ -8,7 +7,6 @@ import AuthorInfo from "../../components/AuthorInfo/authorInfo"
 import BlogCardContainer from "../../containers/BlogCardContainer/blogCardContainer"
 import Form from "../../components/Form/form"
 import NeedLogin from "../../components/NeedLogin/needLogin"
-// import Button from "../../components/Button/button"
 
 class App extends Component {
     constructor() {
@@ -22,7 +20,6 @@ class App extends Component {
     componentDidMount() {
         auth.onAuthStateChanged((user) => {
           if (user) {
-            // this.setState({ user });
             this.writeUserData(user.uid, user.displayName, user.email, user.photoURL);
             this.setState({user});
           } 
@@ -38,9 +35,6 @@ class App extends Component {
     }
     login() {
         auth.signInWithPopup(provider) 
-        //   .then((result) => {
-            // const user = result.user;
-        //   });
       }
       logout() {
         auth.signOut()
@@ -53,7 +47,6 @@ class App extends Component {
     render () {
         return (
             <Layout>
-            {/* userImg={this.state.user.photoURL} userName={this.state.user.displayName} */}
                 {this.state.user ?
                     <>
                         <AuthorInfo logoutHandle={this.logout} user={this.state.user}></AuthorInfo>
