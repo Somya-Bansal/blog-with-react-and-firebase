@@ -1,6 +1,6 @@
 import React from "react"
 
-// import CommentsContainer from "../CommentsContainer/commentsContainer"
+import CommentsContainer from "../CommentsContainer/commentsContainer"
 import BlogPostContent from "../../components/BlogPostContent/blogPostContent"
 import styles from "./blogPost.module.scss"
 
@@ -9,7 +9,7 @@ class BlogPost extends React.Component {
         return (
             <div className={styles.leftContainer}>
                 <BlogPostContent postState={this.props.postState}></BlogPostContent>
-                {/* <CommentsContainer></CommentsContainer> */}
+                <CommentsContainer postState={this.props.postState}></CommentsContainer>
             </div>
         );
     }

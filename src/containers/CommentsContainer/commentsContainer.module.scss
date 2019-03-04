@@ -1,0 +1,37 @@
+.container {
+    width:100%;
+    background-color: #FFFFFF;
+    border-bottom: 4px solid #57bdad;   
+    margin: 20px 30px;
+    padding: 30px;
+    display: flex;
+    justify-content: space-around;
+    .comment {
+        background: url(https://lh5.googleusercontent.com/-kfxAAytuHik/UcPyAHbhsxI/AAAAAAAAB7E/h9hMrLZPz3g/s16/meta_comment.png) no-repeat scroll left center rgba(0, 0, 0, 0);
+        margin-right: 20px;
+        padding-left: 23px;
+        color: #999999;
+        font-size: 13px;
+        border-style: none;
+    }
+    .upvote {
+        background: url("../../images/upvoteIcon.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+        background-size: 18px;
+        margin-right: 20px;
+        padding-left: 27px;
+        font-size: 13px;
+        opacity: 0.4;
+        color: black;
+        border-style: none;
+    }
+    .downvote {
+        background: url("../../images/downvoteIcon.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+        background-size: 18px;
+        margin-right: 20px;
+        padding-left: 27px;
+        font-size: 13px;
+        opacity: 0.4;
+        color: black;
+        border-style: none;
+    }
+}

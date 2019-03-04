@@ -45,6 +45,24 @@
             color: #999999;
             font-size: 13px;
         }
+        .upvotes {
+            background: url("../../images/upvoteIcon.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+            background-size: 16px;
+            margin-right: 20px;
+            padding-left: 20px;
+            opacity: 0.4;
+            color: black;
+            font-size: 13px;
+        }
+        .downvotes {
+            background: url("../../images/downvoteIcon.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+            background-size: 16px;
+            margin-right: 20px;
+            padding-left: 20px;
+            color: black;
+            opacity: 0.4;
+            font-size: 13px;
+        }
     }
     .blogPostImageContainer {
         padding: 10px;

@@ -31,7 +31,9 @@ class Form extends Component {
             authorName: this.state.authorName,
             authorEmail: this.props.user.email,
             authorImg: this.props.user.photoURL,
-            publishDate: today
+            publishDate: today,
+            upvotes: 0,
+            downvotes: 0
         }
         postsRef.push(post);
 

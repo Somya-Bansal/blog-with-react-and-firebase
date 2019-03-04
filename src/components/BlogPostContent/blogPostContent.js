@@ -19,10 +19,16 @@ class BlogPostContent extends React.Component {
                     </div>
                     <div className={styles.date}>
                         {this.props.postState.publishDate}
-                        </div>
+                    </div>
                     <div className={styles.comments}>
                         0 comments
-                        </div>
+                    </div>
+                    <div className={styles.upvotes}>
+                        {this.props.postState.upvotes} upvotes
+                    </div>
+                    <div className={styles.downvotes}>
+                        {this.props.postState.downvotes} downvotes
+                    </div>
                 </div>
                 <div className={styles.blogPostImageContainer}>
                     <img className={styles.blogPostImage} alt="" src={blogPic}></img>
