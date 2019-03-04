@@ -13,6 +13,7 @@
         color: #999999;
         font-size: 13px;
         border-style: none;
+        cursor: pointer;
     }
     .upvote {
         background: url("../../images/upvoteIcon.png") no-repeat scroll left center rgba(0, 0, 0, 0);
@@ -23,6 +24,13 @@
         opacity: 0.4;
         color: black;
         border-style: none;
+        cursor: pointer;
+    }
+    .upvote:hover{
+        opacity: 1;
+    }
+    .upvote:disabled{
+        color: #57bdad;
     }
     .downvote {
         background: url("../../images/downvoteIcon.png") no-repeat scroll left center rgba(0, 0, 0, 0);
@@ -33,5 +41,12 @@
         opacity: 0.4;
         color: black;
         border-style: none;
+        cursor: pointer;
+    }
+    .downvote:hover{
+        opacity: 1;
+    }
+    .downvote:disabled{
+        color: #57bdad;
     }
 }
