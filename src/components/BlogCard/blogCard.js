@@ -21,13 +21,6 @@ class BlogCard extends React.Component {
                                     pathname:'/blogPostPage',
                                     state: {
                                         id: this.props.cardState.id,
-                                        title: this.props.cardState.title,
-                                        body: this.props.cardState.body,
-                                        authorName: this.props.cardState.authorName,
-                                        publishDate: this.props.cardState.publishDate,
-                                        authorImg: this.props.cardState.authorImg,
-                                        upvotes: this.props.cardState.upvotes,
-                                        downvotes:this.props.cardState.downvotes
                                     }
                                 }}
                                 className={styles.title}
@@ -47,13 +40,6 @@ class BlogCard extends React.Component {
                             pathname:'/blogPostPage',
                             state: {
                                 id: this.props.cardState.id,
-                                title: this.props.cardState.title,
-                                body: this.props.cardState.body,
-                                authorName: this.props.cardState.authorName,
-                                publishDate: this.props.cardState.publishDate,
-                                authorImg: this.props.cardState.authorImg,
-                                upvotes: this.props.cardState.upvotes,
-                                downvotes:this.props.cardState.downvotes
                             }
                         }}
                         className={styles.readMore}

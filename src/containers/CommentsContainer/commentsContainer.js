@@ -7,16 +7,30 @@ class CommentsContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            upvotes: this.props.postState.upvotes,
-            downvotes: this.props.postState.downvotes
+            upvotes: 0,
+            downvotes: 0
         }
         this.handleUpvoteClick = this.handleUpvoteClick.bind(this);
         this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
     }
+    componentDidMount() {
+        const postId = this.props.postState.id;
+        const postRef = firebase.database().ref('posts/' + postId);
+        postRef.on("value", (snapshot) => {
+            let post = snapshot.val();
+            this.setState({
+                upvotes: post.upvotes,
+                downvotes: post.downvotes
+            });
+        }, function (errorObject) {
+            console.log("The read failed: " + errorObject.code);
+          }
+        );
+    }
     handleUpvoteClick() {
         const postId = this.props.postState.id;
-        const newVote = this.state.upvotes + 1;
         const postRef = firebase.database().ref('posts/' + postId);
+        let newVote = this.state.upvotes + 1;
         postRef.update({
             upvotes: newVote
         })
@@ -25,9 +39,9 @@ class CommentsContainer extends React.Component {
         })
     }
     handleDownvoteClick() {
-        const newVote = this.state.downvotes + 1;
         const postId = this.props.postState.id;
         const postRef = firebase.database().ref('posts/' + postId);
+        let newVote = this.state.downvotes + 1;
         postRef.update({
             downvotes: newVote
         })
