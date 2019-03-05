@@ -31,6 +31,7 @@
     }
     .upvote:disabled{
         color: #57bdad;
+        pointer-events:none;
     }
     .downvote {
         background: url("../../images/downvoteIcon.png") no-repeat scroll left center rgba(0, 0, 0, 0);
@@ -48,5 +49,6 @@
     }
     .downvote:disabled{
         color: #57bdad;
+        pointer-events:none;
     }
 }

@@ -8,7 +8,9 @@ class CommentsContainer extends React.Component {
         super(props);
         this.state = {
             upvotes: 0,
-            downvotes: 0
+            downvotes: 0,
+            upvoted: false,
+            downvoted: false
         }
         this.handleUpvoteClick = this.handleUpvoteClick.bind(this);
         this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
@@ -30,35 +32,48 @@ class CommentsContainer extends React.Component {
     handleUpvoteClick() {
         const postId = this.props.postState.id;
         const postRef = firebase.database().ref('posts/' + postId);
-        let newVote = this.state.upvotes + 1;
-        postRef.update({
-            upvotes: newVote
-        })
-        this.setState({
-            upvotes: newVote
-        })
+        if(!this.state.upvoted) {   
+            let newVote = this.state.upvotes + 1;
+            postRef.update({
+                upvotes: newVote
+            })
+            this.setState({
+                upvotes: newVote,
+                upvoted: true
+            })
+        }
     }
     handleDownvoteClick() {
         const postId = this.props.postState.id;
         const postRef = firebase.database().ref('posts/' + postId);
-        let newVote = this.state.downvotes + 1;
-        postRef.update({
-            downvotes: newVote
-        })
-        this.setState({
-            downvotes: newVote
-        })
+        if(!this.state.downvoted) {    
+            let newVote = this.state.downvotes + 1;
+            postRef.update({
+                downvotes: newVote
+            })
+            this.setState({
+                downvotes: newVote,
+                downvoted:  true
+            })
+        }
     }
     render() {
         return (
             <div className={styles.container}>
-                <button onClick={this.handleUpvoteClick} className={styles.upvote}>
-                    {this.state.upvotes} Upvotes
+                <button 
+                    onClick={this.handleUpvoteClick}
+                    disabled={this.state.upvoted ? "disabled" : ""}
+                    className={styles.upvote}>
+                        {this.state.upvotes} Upvotes
                 </button>
-                <button onClick={this.handleDownvoteClick} className={styles.downvote}>
-                    {this.state.downvotes} Downvotes
+                <button
+                    onClick={this.handleDownvoteClick}
+                    disabled={this.state.downvoted ? "disabled" : ""}
+                    className={styles.downvote}>
+                        {this.state.downvotes} Downvotes
                 </button>
-                <button className={styles.comment}>
+                <button 
+                    className={styles.comment}>
                     Comments
                 </button>
             </div>
