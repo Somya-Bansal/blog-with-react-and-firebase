@@ -1,5 +1,5 @@
 import React from 'react'
-import firebase, { auth } from '../../config/firebase'
+import firebase from '../../config/firebase'
 
 import styles from './commentsContainer.module.scss'
 
@@ -8,7 +8,7 @@ class CommentsContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            userId: '',
+            userId: this.props.loggedInUser,
             upvotes: 0,
             downvotes: 0,
             upvoted: false,
@@ -18,18 +18,14 @@ class CommentsContainer extends React.Component {
         this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
     }
     componentDidMount() {
+        console.log("Comments Container Mounted");
         this._isMounted = true;
-        auth.onAuthStateChanged((user) => {
-            this.setState({
-                userId: user.email
-            })
-        });
-
+        
         const postId = this.props.postState.id;
         const postRef = firebase.database().ref('posts/' + postId);
         const upvoteRef = firebase.database().ref('posts/' + postId + '/upvotedBy');
         const downvoteRef = firebase.database().ref('posts/' + postId + '/downvotedBy');
-
+        
         postRef.on("value", (snapshot) => {
             let post = snapshot.val();
             if(this._isMounted){
@@ -41,21 +37,25 @@ class CommentsContainer extends React.Component {
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
         });
-
-        upvoteRef.once("value", snap => {
+        
+        upvoteRef.on("value", snap => {
+            console.log("checking for user already in db");
             let arr = snap.val();
             for (let i in arr) {
-                // console.log(arr[i]);
-                // console.log(arr[i] === this.state.userId);
+                console.log("inside the loop!");
+                console.log("found the user?" + (arr[i] === this.state.userId));
+                console.log("arr[i] : " + arr[i]);
+                console.log("this.state.userId : " + this.state.userId);
                 if ((arr[i] === this.state.userId) && this._isMounted) {
+                    console.log("already upvoted!");
                     this.setState({
                         upvoted: true
                     })
                 }
             }
         })
-
-        downvoteRef.once("value", snap => {
+        
+        downvoteRef.on("value", snap => {
             let arr = snap.val();
             for (let i in arr) {
                 if ((arr[i] === this.state.userId) && this._isMounted) {
@@ -67,6 +67,7 @@ class CommentsContainer extends React.Component {
         })
     }
     componentWillUnmount() {
+        console.log("Comments Container Unmounted!");
         this._isMounted = false;
     }
     handleUpvoteClick() {

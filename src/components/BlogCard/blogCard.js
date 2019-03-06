@@ -20,7 +20,7 @@ class BlogCard extends React.Component {
                                 to={{
                                     pathname:'/blogPostPage',
                                     state: {
-                                        id: this.props.cardState.id,
+                                        id: this.props.cardState.id
                                     }
                                 }}
                                 className={styles.title}
