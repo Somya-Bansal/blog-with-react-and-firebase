@@ -58,6 +58,7 @@ class App extends Component {
                         <>
                             <AuthorInfo logoutHandle={this.logout} user={this.state.user}></AuthorInfo>
                             <Form db={firebase} user={this.state.user}></Form>
+                            <BlogCardContainer db={firebase}></BlogCardContainer>
                         </>
                     :
                         <NeedLogin loginHandle={this.login}></NeedLogin>
@@ -65,7 +66,6 @@ class App extends Component {
                 :
                     <Loader></Loader>
                 }
-                <BlogCardContainer db={firebase}></BlogCardContainer>
             </Layout>
         );
     }

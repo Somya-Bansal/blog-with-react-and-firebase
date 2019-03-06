@@ -33,7 +33,9 @@ class Form extends Component {
             authorImg: this.props.user.photoURL,
             publishDate: today,
             upvotes: 0,
-            downvotes: 0
+            downvotes: 0,
+            upvotedBy: null,
+            downvotedBy: null
         }
         postsRef.push(post);
 
