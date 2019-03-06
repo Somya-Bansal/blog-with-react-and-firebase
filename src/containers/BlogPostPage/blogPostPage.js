@@ -5,11 +5,13 @@ import Layout from "../../components/Layout/layout"
 import BlogPost from "../../containers/BlogPost/blogPost"
 // import Sidebar from "../components/sidebar"
 import styles from "./blogPostPage.module.scss"
+import Loader from "../../components/Loader/loader"
 
 class BlogPostPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            loading: true,
             loggedInUser: ''
         }
     }
@@ -18,6 +20,7 @@ class BlogPostPage extends React.Component {
         auth.onAuthStateChanged((user) => {
             let userEmail = user.email;
             this.setState({
+                loading: false,
                 loggedInUser: userEmail
             })
             console.log("LoggedInUser : " + userEmail);
@@ -25,17 +28,19 @@ class BlogPostPage extends React.Component {
         });
     }
     render () {
-        return (
-            <Layout>
-                <div className={styles.blogPostPage}>
-                    <h1>
-                        {this.state.loggenInUser}
-                    </h1>
-                    <BlogPost postState={this.props.location.state} loggedInUser={this.state.loggenInUser}></BlogPost>
-                    {/* <Sidebar></Sidebar> */}
-                </div>
-            </Layout>
-        );
+        if(this.state.loading) {
+            return <Loader></Loader>
+        }
+        else {
+            return (
+                <Layout>
+                    <div className={styles.blogPostPage}>
+                        <BlogPost postState={this.props.location.state} loggedInUser={this.state.loggedInUser}></BlogPost>
+                        {/* <Sidebar></Sidebar> */}
+                    </div>
+                </Layout>
+            );
+        }
     }
 }
 export default BlogPostPage;
