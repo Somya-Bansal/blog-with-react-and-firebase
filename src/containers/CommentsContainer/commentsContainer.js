@@ -4,6 +4,7 @@ import firebase, { auth } from '../../config/firebase'
 import styles from './commentsContainer.module.scss'
 
 class CommentsContainer extends React.Component {
+    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -17,9 +18,10 @@ class CommentsContainer extends React.Component {
         this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
     }
     componentDidMount() {
+        this._isMounted = true;
         auth.onAuthStateChanged((user) => {
             this.setState({
-                userId: user.uid
+                userId: user.email
             })
         });
 
@@ -30,11 +32,12 @@ class CommentsContainer extends React.Component {
 
         postRef.on("value", (snapshot) => {
             let post = snapshot.val();
-
-            this.setState({
-                upvotes: post.upvotes,
-                downvotes: post.downvotes
-            });
+            if(this._isMounted){
+                this.setState({
+                    upvotes: post.upvotes,
+                    downvotes: post.downvotes
+                });
+            }
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
         });
@@ -42,7 +45,9 @@ class CommentsContainer extends React.Component {
         upvoteRef.once("value", snap => {
             let arr = snap.val();
             for (let i in arr) {
-                if (arr[i] === this.state.userId) {
+                // console.log(arr[i]);
+                // console.log(arr[i] === this.state.userId);
+                if ((arr[i] === this.state.userId) && this._isMounted) {
                     this.setState({
                         upvoted: true
                     })
@@ -53,7 +58,7 @@ class CommentsContainer extends React.Component {
         downvoteRef.once("value", snap => {
             let arr = snap.val();
             for (let i in arr) {
-                if (arr[i] === this.state.userId) {
+                if ((arr[i] === this.state.userId) && this._isMounted) {
                     this.setState({
                         downvoted: true
                     })
@@ -61,12 +66,16 @@ class CommentsContainer extends React.Component {
             }
         })
     }
+    componentWillUnmount() {
+        this._isMounted = false;
+    }
     handleUpvoteClick() {
         const postId = this.props.postState.id;
         const postRef = firebase.database().ref('posts/' + postId);
         const upvoteRef = firebase.database().ref('posts/' + postId + '/upvotedBy');
 
-        if (!this.state.upvoted) {
+        console.log(!this.state.upvoted);
+        if (!this.state.upvoted && this._isMounted) {
             let newUpvoteCount = this.state.upvotes + 1;
             postRef.update({
                 upvotes: newUpvoteCount
@@ -84,7 +93,7 @@ class CommentsContainer extends React.Component {
         const postRef = firebase.database().ref('posts/' + postId);
         const downvoteRef = firebase.database().ref('posts/' + postId + '/downvotedBy');
 
-        if (!this.state.downvoted) {
+        if (!this.state.downvoted && this._isMounted) {
             let newDownvoteCount = this.state.downvotes + 1;
             postRef.update({
                 downvotes: newDownvoteCount

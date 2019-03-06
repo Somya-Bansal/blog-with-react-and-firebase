@@ -5,6 +5,7 @@ import styles from "./blogPostContent.module.scss"
 import blogPic from "../../images/blog1.jpg"
 
 class BlogPostContent extends React.Component {
+    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -12,17 +13,23 @@ class BlogPostContent extends React.Component {
         }
     }
     componentDidMount() {
+        this._isMounted = true;
         const postId = this.props.postState.id;
         const postRef = firebase.database().ref('posts/' + postId);
         postRef.on("value", (snapshot) => {
             let post = snapshot.val();
-            this.setState({
-                post: post
-            });
+            if(this._isMounted) {
+                this.setState({
+                    post: post
+                });
+            }
         }, function (errorObject) {
             console.log("The read failed: " + errorObject.code);
           }
         );
+    }
+    componentWillUnmount() {
+        this._isMounted = false;
     }
     render() {
         return (
