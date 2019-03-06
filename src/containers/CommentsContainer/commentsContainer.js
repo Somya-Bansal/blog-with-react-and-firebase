@@ -18,7 +18,6 @@ class CommentsContainer extends React.Component {
         this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
     }
     componentDidMount() {
-        console.log("Comments Container Mounted");
         this._isMounted = true;
         
         const postId = this.props.postState.id;
@@ -39,15 +38,9 @@ class CommentsContainer extends React.Component {
         });
         
         upvoteRef.on("value", snap => {
-            console.log("checking for user already in db");
             let arr = snap.val();
             for (let i in arr) {
-                console.log("inside the loop!");
-                console.log("found the user?" + (arr[i] === this.state.userId));
-                console.log("arr[i] : " + arr[i]);
-                console.log("this.state.userId : " + this.state.userId);
                 if ((arr[i] === this.state.userId) && this._isMounted) {
-                    console.log("already upvoted!");
                     this.setState({
                         upvoted: true
                     })
@@ -67,7 +60,6 @@ class CommentsContainer extends React.Component {
         })
     }
     componentWillUnmount() {
-        console.log("Comments Container Unmounted!");
         this._isMounted = false;
     }
     handleUpvoteClick() {
@@ -75,7 +67,6 @@ class CommentsContainer extends React.Component {
         const postRef = firebase.database().ref('posts/' + postId);
         const upvoteRef = firebase.database().ref('posts/' + postId + '/upvotedBy');
 
-        console.log(!this.state.upvoted);
         if (!this.state.upvoted && this._isMounted) {
             let newUpvoteCount = this.state.upvotes + 1;
             postRef.update({
