@@ -5,9 +5,12 @@
   "dependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.10.0",
+    "express": "^4.16.4",
+    "express-favicon": "^2.0.1",
     "firebase": "^5.8.4",
     "jest-enzyme": "^7.0.1",
     "node-sass": "^4.11.0",
+    "path": "^0.12.7",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-router": "^3.2.1",

@@ -23,8 +23,6 @@ class BlogPostPage extends React.Component {
                 loading: false,
                 loggedInUser: userEmail
             })
-            console.log("LoggedInUser : " + userEmail);
-
         });
     }
     render () {
