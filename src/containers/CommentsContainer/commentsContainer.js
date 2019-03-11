@@ -2,12 +2,14 @@ import React from 'react'
 import firebase from '../../config/firebase'
 
 import styles from './commentsContainer.module.scss'
+import CommentsBox from '../../components/commentsBox/commentsBox'
 
 class CommentsContainer extends React.Component {
     _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
+            showCommentBox: false,
             userId: this.props.loggedInUser,
             upvotes: 0,
             downvotes: 0,
@@ -16,6 +18,7 @@ class CommentsContainer extends React.Component {
         }
         this.handleUpvoteClick = this.handleUpvoteClick.bind(this);
         this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
+        this.showComments = this.showComments.bind(this);
     }
     componentDidMount() {
         this._isMounted = true;
@@ -96,29 +99,43 @@ class CommentsContainer extends React.Component {
             this.setState({
                 downvotes: newDownvoteCount,
                 downvoted: true
-            })
+            });
+        }
+    }
+    showComments() {
+        if(this._isMounted) {
+            this.setState({
+                showCommentBox: true
+            });
         }
     }
     render() {
         return (
-            <div className={styles.container}>
-                <button
-                    onClick={this.handleUpvoteClick}
-                    disabled={this.state.upvoted ? "disabled" : ""}
-                    className={styles.upvote}>
-                    {this.state.upvotes} Upvotes
-                </button>
-                <button
-                    onClick={this.handleDownvoteClick}
-                    disabled={this.state.downvoted ? "disabled" : ""}
-                    className={styles.downvote}>
-                    {this.state.downvotes} Downvotes
-                </button>
-                <button
-                    className={styles.comment}>
-                    Comments
-                </button>
-            </div>
+            <>
+                <div className={styles.container}>
+                    <button
+                        onClick={this.handleUpvoteClick}
+                        disabled={this.state.upvoted ? "disabled" : ""}
+                        className={styles.upvote}
+                        >
+                            {this.state.upvotes} Upvotes
+                    </button>
+                    <button
+                        onClick={this.handleDownvoteClick}
+                        disabled={this.state.downvoted ? "disabled" : ""}
+                        className={styles.downvote}
+                        >
+                            {this.state.downvotes} Downvotes
+                    </button>
+                    <button
+                        className={styles.comment}
+                        onClick={this.showComments}
+                        >
+                            Comments
+                    </button>
+                </div>
+                {this.state.showCommentBox ? <CommentsBox /> : null}
+            </>
         )
     }
 }

@@ -1,4 +1,7 @@
 import React, { Component } from "react"
+// import FileUploader from "react-firebase-file-uploader";
+// import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
+
 
 import styles from "./form.module.scss"
 
@@ -11,7 +14,11 @@ class Form extends Component {
             authorName: '',
             authorEmail: '',
             authorImg: '',
-            publishDate: ''
+            publishDate: '',
+            // blogPostImage: "",
+            // isUploading: false,
+            // progress: 0,
+            // blogPostImageURL: ""
         }
         this.handleChangeField = this.handleChangeField.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,6 +28,15 @@ class Form extends Component {
             [key]: event.target.value
         });
     }
+    // handleUploadSuccess = filename => {
+    //     this.setState({ blogPostImage: filename, progress: 100, isUploading: false });
+    //     firebase
+    //       .storage()
+    //       .ref("images")
+    //       .child(filename)
+    //       .getDownloadURL()
+    //       .then(url => this.setState({ blogPostImageURL: url }));
+    //   };
     handleSubmit(e){
         let today = (new Date()).toDateString();
 
@@ -78,6 +94,22 @@ class Form extends Component {
                     placeholder="Author Email Id"
                     readOnly
                 ></input>
+                {/* <label style={{backgroundColor: 'steelblue', color: 'white', padding: 10, borderRadius: 4, pointer: 'cursor'}}>
+                    Image for your post
+                    {this.state.isUploading && <p>Progress: {this.state.progress}</p>}
+                    {this.state.blogPostImageURL && <img src={this.state.blogPostImageURL} alt="" />}
+                    <FileUploader
+                        hidden
+                        accept="image/*"
+                        name="blogPostImage"
+                        randomizeFilename
+                        storageRef={this.props.db.storage().ref("images")}
+                        onUploadStart={this.handleUploadStart}
+                        onUploadError={this.handleUploadError}
+                        onUploadSuccess={this.handleUploadSuccess}
+                        onProgress={this.handleProgress}
+                    ></FileUploader>
+                </label> */}
                 <button onClick={this.handleSubmit} className={styles.articleSubmit}>Add Post</button>
             </div>
         );

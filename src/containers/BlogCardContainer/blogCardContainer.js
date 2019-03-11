@@ -12,6 +12,7 @@ class BlogCardContainer extends React.Component {
         }
     }
     componentDidMount() {
+        // console.log("BlogCardContainer Mounted!");
         this._isMounted = true;
         const postsRef = this.props.db.database().ref('posts');
         postsRef.on("value", (snapshot) => {

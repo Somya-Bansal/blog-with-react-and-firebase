@@ -7,10 +7,9 @@ import AuthorInfo from "../../components/AuthorInfo/authorInfo"
 import BlogCardContainer from "../../containers/BlogCardContainer/blogCardContainer"
 import Form from "../../components/Form/form"
 import NeedLogin from "../../components/NeedLogin/needLogin"
-import Loader from "../../components/Loader/loader" 
+import Loader from "../../components/Loader/loader"
 
 class App extends Component {
-
     constructor() {
         super();
         this.state = {
@@ -25,13 +24,13 @@ class App extends Component {
             this.setState({
                 isLoaded: true
             })
-          if (user) {
-            this.writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-            this.setState({user});
-          } 
+            if (user) {
+                this.writeUserData(user.uid, user.displayName, user.email, user.photoURL);
+            }
+            this.setState({ user });
         });
     }
-    writeUserData = (userId, userName, userEmail, userImg ) => {
+    writeUserData = (userId, userName, userEmail, userImg) => {
         const userRef = firebase.database().ref('users/' + userId);
         userRef.set({
             username: userName,
@@ -40,17 +39,12 @@ class App extends Component {
         })
     }
     login() {
-        auth.signInWithPopup(provider) 
-      }
-      logout() {
-        auth.signOut()
-        .then(() => {
-          this.setState({
-            user: null
-          });
-        });
-      }
-    render () {
+        auth.signInWithPopup(provider);
+    }
+    logout() {
+        auth.signOut();
+    }
+    render() {
         return (
             <Layout>
                 {this.state.isLoaded ?
@@ -60,10 +54,10 @@ class App extends Component {
                             <Form db={firebase} user={this.state.user}></Form>
                             <BlogCardContainer db={firebase} loggedInUser={this.state.user}></BlogCardContainer>
                         </>
-                    :
+                        :
                         <NeedLogin loginHandle={this.login}></NeedLogin>
                     )
-                :
+                    :
                     <Loader></Loader>
                 }
             </Layout>
