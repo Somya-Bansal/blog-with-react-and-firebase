@@ -48,7 +48,7 @@ class BlogPostContent extends React.Component {
                         {this.state.post.publishDate}
                     </div>
                     <div className={styles.comments}>
-                        {this.state.post.commenCount} comments
+                        {this.state.post.commentCount} comments
                     </div>
                     <div className={styles.upvotes}>
                         {this.state.post.upvotes} upvotes
