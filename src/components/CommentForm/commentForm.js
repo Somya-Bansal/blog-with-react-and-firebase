@@ -23,7 +23,8 @@ class CommentForm extends React.Component {
             [key]: event.target.value
         });
     }
-    handleCommentSubmit() {
+    handleCommentSubmit = e => {
+        e.preventDefault();
         let today = (new Date()).toDateString();
 
         const postId = this.props.postState.id;
@@ -51,15 +52,15 @@ class CommentForm extends React.Component {
     render() {
         const commentBody = this.state.commentBody;
         return (
-            <div className={styles.CommentForm}>
-                <textarea
+            <form onSubmit={this.handleCommentSubmit} className={styles.CommentForm}>
+                <input
                     onChange={(ev) => this.handleChangeField('commentBody', ev)}
                     value={commentBody}
                     placeholder="Add a Comment"
                     className={styles.commentContent}
-                ></textarea>
-                <Button onClickHandle={this.handleCommentSubmit}>Submit</Button>
-            </div>
+                ></input>
+                <Button type="submit">Submit</Button>
+            </form>
         )
     }
 }
