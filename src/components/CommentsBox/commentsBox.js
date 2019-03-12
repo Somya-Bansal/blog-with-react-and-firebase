@@ -1,7 +1,8 @@
 import React from "react"
 
 import styles from './commentsBox.module.scss'
-import CommentCard from '../../components/commentCard/commentCard'
+import CommentCard from '../../components/CommentCard/commentCard'
+import CommentForm from '../../components/CommentForm/commentForm'
 
 class CommentsBox extends React.Component {
     render() {
@@ -9,7 +10,8 @@ class CommentsBox extends React.Component {
             <div className={styles.commentBox}>
                 <h1>Comments(0)</h1>
                 <p></p>
-                <CommentCard></CommentCard>
+                <CommentCard postState={this.props.postState} loggedInUser={this.props.loggedInUser}></CommentCard>
+                <CommentForm postState={this.props.postState} loggedInUser={this.props.loggedInUser}></CommentForm>
             </div>
         );
     }

@@ -1,0 +1,38 @@
+.CommentCard {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: inherit;
+    display: flex;
+    align-items: flex-start;
+    .avatar {
+        margin-right: 10px;
+        display: flex;
+        justify-content: center;
+        img {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+        }
+    }
+    .commentInfo {
+        flex-shrink: 0;
+        .commentorInfo{
+            display: flex;
+            width: 100%;
+            align-items: baseline;
+            flex-wrap: wrap;
+            .commentorName {
+                margin-right: 10px;
+                font-weight: bold;
+            }
+            .commentDate {
+                margin-right: 10px;
+                color: #999999;
+                font-size: 12px;
+            }
+        }
+        .commentBody {
+            margin: 10px 0;
+        }
+    }
+}

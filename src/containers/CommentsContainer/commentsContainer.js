@@ -2,7 +2,7 @@ import React from 'react'
 import firebase from '../../config/firebase'
 
 import styles from './commentsContainer.module.scss'
-import CommentsBox from '../../components/commentsBox/commentsBox'
+import CommentsBox from '../../components/CommentsBox/commentsBox'
 
 class CommentsContainer extends React.Component {
     _isMounted = false;
@@ -14,7 +14,8 @@ class CommentsContainer extends React.Component {
             upvotes: 0,
             downvotes: 0,
             upvoted: false,
-            downvoted: false
+            downvoted: false,
+            // commentsCount: 0
         }
         this.handleUpvoteClick = this.handleUpvoteClick.bind(this);
         this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
@@ -33,7 +34,8 @@ class CommentsContainer extends React.Component {
             if(this._isMounted){
                 this.setState({
                     upvotes: post.upvotes,
-                    downvotes: post.downvotes
+                    downvotes: post.downvotes,
+                    // commentsCount: post.commentsCount
                 });
             }
         }, function (errorObject) {
@@ -134,7 +136,7 @@ class CommentsContainer extends React.Component {
                             Comments
                     </button>
                 </div>
-                {this.state.showCommentBox ? <CommentsBox /> : null}
+                {this.state.showCommentBox ? <CommentsBox postState={this.props.postState} loggedInUser={this.props.loggedInUser} /> : null}
             </>
         )
     }
