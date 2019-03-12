@@ -1,27 +1,25 @@
 import React from 'react'
 
 import styles from './commentCard.module.scss'
-import blogPic from "../../images/blog1.jpg"
-
 class CommentCard extends React.Component {
     render() {
         return(
             <div className={styles.CommentCard}>
                 <div className={styles.avatar}>
-                    <img src={blogPic} alt=""></img>
+                    <img src={this.props.cardState.commentorAvatar} alt=""></img>
                 </div>
                 <div className={styles.commentInfo}>
                     <div className={styles.commentorInfo}>
                         <div className={styles.commentorName}>
-                            Somya Bansal
+                            {this.props.cardState.commentor}
                         </div>
                         <div className={styles.commentDate}>
-                            12 Mar 2019
+                            {this.props.cardState.commentTimeStamp}
                         </div>
                     </div>
                     <div className={styles.commentBody}>
                         <p>
-                            Comment content  which basically says that the blog post above is very amazing
+                            {this.props.cardState.commentBody}
                         </p>
                     </div>
                 </div>

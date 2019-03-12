@@ -10,7 +10,7 @@ class CommentsContainer extends React.Component {
         super(props);
         this.state = {
             showCommentBox: false,
-            userId: this.props.loggedInUser,
+            userId: this.props.loggedInUser.userEmail,
             upvotes: 0,
             downvotes: 0,
             upvoted: false,

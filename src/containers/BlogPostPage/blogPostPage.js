@@ -12,16 +12,22 @@ class BlogPostPage extends React.Component {
         super(props);
         this.state = {
             loading: true,
-            loggedInUser: ''
+            loggedInUser: {}
         }
     }
 
     componentDidMount() {
         auth.onAuthStateChanged((user) => {
             let userEmail = user.email;
+            let username = user.displayName;
+            let userImageURL = user.photoURL;
             this.setState({
                 loading: false,
-                loggedInUser: userEmail
+                loggedInUser: {
+                    userEmail: userEmail,
+                    username: username,
+                    userImageURL: userImageURL
+                }
             })
         });
     }
