@@ -51,7 +51,8 @@ class Form extends Component {
             upvotes: 0,
             downvotes: 0,
             upvotedBy: null,
-            downvotedBy: null
+            downvotedBy: null,
+            commentCount: 0
         }
         postsRef.push(post);
 

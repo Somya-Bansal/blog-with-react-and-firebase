@@ -38,13 +38,13 @@ class CommentsBox extends React.Component {
     render() {
         return(
             <div className={styles.commentBox}>
-                <h1>Comments(0)</h1>
+                <h1>Comments({this.props.commentCount})</h1>
                 {this.state.comments.map((comment) => {
                     return(
                         <CommentCard key={comment.id} cardState={comment}></CommentCard>
                     )
                 })}
-                <CommentForm postState={this.props.postState} loggedInUser={this.props.loggedInUser}></CommentForm>
+                <CommentForm postState={this.props.postState} loggedInUser={this.props.loggedInUser} commentCount={this.props.commentCount}></CommentForm>
             </div>
         );
     }

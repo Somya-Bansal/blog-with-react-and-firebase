@@ -15,7 +15,7 @@ class CommentsContainer extends React.Component {
             downvotes: 0,
             upvoted: false,
             downvoted: false,
-            // commentsCount: 0
+            commentCount: 0
         }
         this.handleUpvoteClick = this.handleUpvoteClick.bind(this);
         this.handleDownvoteClick = this.handleDownvoteClick.bind(this);
@@ -35,7 +35,7 @@ class CommentsContainer extends React.Component {
                 this.setState({
                     upvotes: post.upvotes,
                     downvotes: post.downvotes,
-                    // commentsCount: post.commentsCount
+                    commentCount: post.commentCount
                 });
             }
         }, function (errorObject) {
@@ -133,10 +133,10 @@ class CommentsContainer extends React.Component {
                         className={styles.comment}
                         onClick={this.showComments}
                         >
-                            Comments
+                           {this.state.commentCount} Comments
                     </button>
                 </div>
-                {this.state.showCommentBox ? <CommentsBox postState={this.props.postState} loggedInUser={this.props.loggedInUser} /> : null}
+                {this.state.showCommentBox ? <CommentsBox postState={this.props.postState} loggedInUser={this.props.loggedInUser} commentCount={this.state.commentCount}/> : null}
             </>
         )
     }

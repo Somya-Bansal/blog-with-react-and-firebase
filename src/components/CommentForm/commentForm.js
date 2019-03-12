@@ -12,7 +12,8 @@ class CommentForm extends React.Component {
             commentor: '',
             commentTimeStamp: '',
             commentBody: '',
-            commentorAvatar: ''
+            commentorAvatar: '',
+            // commentCount: 0
         }
         this.handleChangeField = this.handleChangeField.bind(this);
         this.handleCommentSubmit = this.handleCommentSubmit.bind(this);
@@ -34,7 +35,10 @@ class CommentForm extends React.Component {
             commentBody: this.state.commentBody,
             commentorAvatar: this.props.loggedInUser.userImageURL
         }
-
+        let updatedCommentCount = this.props.commentCount + 1;
+        postRef.update({
+            commentCount: updatedCommentCount
+        })
         postRef.child("comments").push(comment);
 
         this.setState({
