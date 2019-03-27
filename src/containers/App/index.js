@@ -8,12 +8,14 @@ import BlogCardContainer from "../../containers/BlogCardContainer/blogCardContai
 import Form from "../../components/Form/form"
 import NeedLogin from "../../components/NeedLogin/needLogin"
 import Loader from "../../components/Loader/loader"
+import { connect } from "react-redux";
+import setCurrentUserAction from '../../actions/setCurrentUserAction'
 
 class App extends Component {
     constructor() {
         super();
         this.state = {
-            user: null,
+            // user: null,
             isLoaded: false
         }
         this.login = this.login.bind(this);
@@ -24,20 +26,22 @@ class App extends Component {
             this.setState({
                 isLoaded: true
             })
-            if (user) {
-                this.writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-            }
-            this.setState({ user });
+            this.props.setCurrentUser(user);
+            // if(user){
+                // console.log({user});
+                // this.writeUserData(user.uid, user.displayName, user.email, user.photoURL);
+            // }
+            // this.setState({ user });
         });
     }
-    writeUserData = (userId, userName, userEmail, userImg) => {
-        const userRef = firebase.database().ref('users/' + userId);
-        userRef.set({
-            username: userName,
-            email: userEmail,
-            profilePicture: userImg
-        })
-    }
+    // writeUserData = (userId, userName, userEmail, userImg) => {
+    //     const userRef = firebase.database().ref('users/' + userId);
+    //     userRef.set({
+    //         username: userName,
+    //         email: userEmail,
+    //         profilePicture: userImg
+    //     })
+    // }
     login() {
         auth.signInWithPopup(provider);
     }
@@ -48,14 +52,18 @@ class App extends Component {
         return (
             <Layout>
                 {this.state.isLoaded ?
-                    (this.state.user ?
+                    (this.props.currentUser ?
                         <>
-                            <AuthorInfo logoutHandle={this.logout} user={this.state.user}></AuthorInfo>
-                            <Form db={firebase} user={this.state.user}></Form>
-                            <BlogCardContainer db={firebase} loggedInUser={this.state.user}></BlogCardContainer>
+                            <h1>{this.props.currentUser}</h1>
+                            <AuthorInfo logoutHandle={this.logout} user={this.props.currentUser}></AuthorInfo>
+                            <Form db={firebase} user={this.props.currentUser}></Form>
+                            <BlogCardContainer db={firebase} loggedInUser={this.sprops.currentUser}></BlogCardContainer>
                         </>
                         :
-                        <NeedLogin loginHandle={this.login}></NeedLogin>
+                        <>
+                            <h1>Hello{this.props.currentUser}</h1>
+                            <NeedLogin loginHandle={this.login}></NeedLogin>
+                        </>
                     )
                     :
                     <Loader></Loader>
@@ -64,4 +72,16 @@ class App extends Component {
         );
     }
 }
-export default App;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        currentUser: state.currentUser
+    }
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setCurrentUser: (user) => {
+            dispatch(setCurrentUserAction(user))
+        }
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(App);
