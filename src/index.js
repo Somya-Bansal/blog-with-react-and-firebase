@@ -9,6 +9,7 @@ import configureStore from './store/configureStore';
 import initialState from './reducers/initialState';
 
 const store = configureStore(initialState);
+// const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>

@@ -10,8 +10,6 @@ const writeUserData = (userId, userName, userEmail, userImg) => {
     })
 }
 const setCurrentUserAction = (user) => {
-    // console.log("From setCurrentUserAction: " + user.username);
-    // console.log({user});
     if(user) {
         writeUserData(user.uid, user.displayName, user.email, user.photoURL);
     }

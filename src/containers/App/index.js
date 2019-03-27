@@ -15,7 +15,6 @@ class App extends Component {
     constructor() {
         super();
         this.state = {
-            // user: null,
             isLoaded: false
         }
         this.login = this.login.bind(this);
@@ -27,21 +26,8 @@ class App extends Component {
                 isLoaded: true
             })
             this.props.setCurrentUser(user);
-            // if(user){
-                // console.log({user});
-                // this.writeUserData(user.uid, user.displayName, user.email, user.photoURL);
-            // }
-            // this.setState({ user });
         });
     }
-    // writeUserData = (userId, userName, userEmail, userImg) => {
-    //     const userRef = firebase.database().ref('users/' + userId);
-    //     userRef.set({
-    //         username: userName,
-    //         email: userEmail,
-    //         profilePicture: userImg
-    //     })
-    // }
     login() {
         auth.signInWithPopup(provider);
     }
