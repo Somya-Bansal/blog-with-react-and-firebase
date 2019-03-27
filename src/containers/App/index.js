@@ -54,16 +54,12 @@ class App extends Component {
                 {this.state.isLoaded ?
                     (this.props.currentUser ?
                         <>
-                            <h1>{this.props.currentUser}</h1>
                             <AuthorInfo logoutHandle={this.logout} user={this.props.currentUser}></AuthorInfo>
                             <Form db={firebase} user={this.props.currentUser}></Form>
-                            <BlogCardContainer db={firebase} loggedInUser={this.sprops.currentUser}></BlogCardContainer>
+                            <BlogCardContainer db={firebase} loggedInUser={this.props.currentUser}></BlogCardContainer>
                         </>
                         :
-                        <>
-                            <h1>Hello{this.props.currentUser}</h1>
                             <NeedLogin loginHandle={this.login}></NeedLogin>
-                        </>
                     )
                     :
                     <Loader></Loader>

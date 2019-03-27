@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import setCurrentUser from '../reducers/setCurrentUserReducer'
 
 const rootReducer = combineReducers({
-    setCurrentUser: setCurrentUser
+    currentUser: setCurrentUser
 });
 
 export default rootReducer;
