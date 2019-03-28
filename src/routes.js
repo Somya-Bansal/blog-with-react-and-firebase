@@ -1,12 +1,12 @@
 import React from 'react'
 import { Router, Route } from 'react-router'
-import App from './containers/App'
-import BlogPostPage from "./containers/BlogPostPage/blogPostPage"
+import App from './components/App'
+import BlogPostPage from "./components/BlogPostPage/blogPostPage"
 
 const Routes = (props) => (
     <Router {...props}>
         <Route path="/" component={ App } />
-        {/* Add components when pages/containers are ready */}
+        {/* Add components when pages/components are ready */}
         <Route path="/skills"/>
         <Route path="/resume"/>
         <Route path="/about"/>

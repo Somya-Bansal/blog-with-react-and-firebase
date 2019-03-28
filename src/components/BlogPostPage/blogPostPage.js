@@ -2,7 +2,7 @@ import React from "react"
 import { auth } from "../../config/firebase"
 
 import Layout from "../../components/Layout/layout"
-import BlogPost from "../../containers/BlogPost/blogPost"
+import BlogPost from "../../components/BlogPost/blogPost"
 // import Sidebar from "../components/sidebar"
 import styles from "./blogPostPage.module.scss"
 import Loader from "../../components/Loader/loader"
