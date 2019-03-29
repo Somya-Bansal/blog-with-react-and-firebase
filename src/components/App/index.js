@@ -55,9 +55,7 @@ class App extends Component {
     }
 }
 const mapStateToProps = (state, ownProps) => {
-    return {
-        currentUser: state.currentUser
-    }
+    return state.currentUser
 };
 const mapDispatchToProps = (dispatch) => {
     return {
