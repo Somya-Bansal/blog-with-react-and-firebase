@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { connect } from "react-redux";
+import * as blogPostActions from '../../actions/blogPostActions'
 // import FileUploader from "react-firebase-file-uploader";
 // import CustomUploadButton from 'react-firebase-file-uploader/lib/CustomUploadButton';
 
@@ -12,9 +14,6 @@ class Form extends Component {
             title: '',
             body: '',
             authorName: '',
-            authorEmail: '',
-            authorImg: '',
-            publishDate: '',
             // blogPostImage: "",
             // isUploading: false,
             // progress: 0,
@@ -38,15 +37,14 @@ class Form extends Component {
     //       .then(url => this.setState({ blogPostImageURL: url }));
     //   };
     handleSubmit(e){
+        e.preventDefault();
         let today = (new Date()).toDateString();
-
-        const postsRef = this.props.db.database().ref('posts');
         const post = {
             title: this.state.title,
             body: this.state.body,
             authorName: this.state.authorName,
-            authorEmail: this.props.user.email,
-            authorImg: this.props.user.photoURL,
+            authorEmail: this.props.currentUser.email,
+            authorImg: this.props.currentUser.photoURL,
             publishDate: today,
             upvotes: 0,
             downvotes: 0,
@@ -54,15 +52,13 @@ class Form extends Component {
             downvotedBy: null,
             commentCount: 0
         }
-        postsRef.push(post);
+
+        this.props.createNewBlogPost(post);
 
         this.setState({
             title: '',
             body: '',
-            authorName: '',
-            authorEmail: '',
-            authorImg: '',
-            publishDate: ''
+            authorName: ''
         });
     }
     render () {
@@ -89,7 +85,7 @@ class Form extends Component {
                     placeholder="Author Name"
                 ></input>
                 <input
-                    value={this.props.user.email}
+                    value={this.props.currentUser.email}
                     type="email"
                     className={styles.authorEmail}
                     placeholder="Author Email Id"
@@ -116,4 +112,17 @@ class Form extends Component {
         );
     }
 }
-export default Form;
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        currentUser: state.currentUser
+    };
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createNewBlogPost: (post) => {
+            dispatch(blogPostActions.createNewBlogPost(post));
+        }
+    };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

@@ -25,7 +25,12 @@ class App extends Component {
             this.setState({
                 isLoaded: true
             })
+            // console.log("FROM component did mount before action call");
+            // console.log(this.props.currentUser);
             this.props.setCurrentUser(user);
+            // console.log("After action call");
+            // console.log(this.props.currentUser);
+
         });
     }
     login() {
@@ -35,13 +40,14 @@ class App extends Component {
         auth.signOut();
     }
     render() {
+        // console.log("FROM RENDER")
         return (
             <Layout>
                 {this.state.isLoaded ?
                     (this.props.currentUser ?
                         <>
                             <LoggedinUserInfo logoutHandle={this.logout} user={this.props.currentUser}></LoggedinUserInfo>
-                            <Form db={firebase} user={this.props.currentUser}></Form>
+                            <Form></Form>
                             <BlogCardContainer db={firebase} loggedInUser={this.props.currentUser}></BlogCardContainer>
                         </>
                         :
@@ -55,7 +61,9 @@ class App extends Component {
     }
 }
 const mapStateToProps = (state, ownProps) => {
-    return state.currentUser
+    return {
+        currentUser: state.currentUser
+    }
 };
 const mapDispatchToProps = (dispatch) => {
     return {

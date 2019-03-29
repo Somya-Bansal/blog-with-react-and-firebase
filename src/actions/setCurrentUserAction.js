@@ -13,9 +13,15 @@ const setCurrentUserAction = (user) => {
     if(user) {
         writeUserData(user.uid, user.displayName, user.email, user.photoURL);
     }
+    const userInfo = {
+        uid: user.uid,
+        displayName: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL
+    } 
     return {
         type: actionTypes.SET_CURRENT_USER,
-        user: user
+        user: userInfo
     }
 }
 export default setCurrentUserAction;

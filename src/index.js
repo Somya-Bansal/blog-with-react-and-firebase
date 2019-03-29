@@ -6,10 +6,10 @@ import { Provider } from 'react-redux';
 import Routes from './routes'
 import registerServiceWorker from './utils/registerServiceWorker'
 import configureStore from './store/configureStore';
-import initialState from './reducers/initialState';
+// import initialState from './reducers/initialState';
 
-const store = configureStore(initialState);
-// const store = configureStore();
+// const store = configureStore(initialState);
+const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>
