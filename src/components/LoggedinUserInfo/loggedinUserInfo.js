@@ -1,15 +1,15 @@
 import React from "react"
 
-import styles from "./authorInfo.module.scss"
+import styles from "./loggedinUserInfo.module.scss"
 import Button from "../../components/Button/button"
 
 
-class AuthorInfo extends React.Component {
+class LoggedinUserInfo extends React.Component {
     render () {
         return (
-            <div className={styles.AuthorInfoContainer}>
+            <div className={styles.LoggedinUserInfoContainer}>
                 <div className={styles.author}>
-                    <div className={styles.authorInfo}>
+                    <div className={styles.LoggedinUserInfo}>
                         <div className={styles.authorImage}>
                             <img src={this.props.user.photoURL} alt=""></img>
                         </div>
@@ -26,4 +26,4 @@ class AuthorInfo extends React.Component {
         )
     }
 }
-export default AuthorInfo;
+export default LoggedinUserInfo;

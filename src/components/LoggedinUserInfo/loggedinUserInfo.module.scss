@@ -1,4 +1,4 @@
-.AuthorInfoContainer {
+.LoggedinUserInfoContainer {
     width: 900px;
     margin: 10px auto;
     background-position: center center;
@@ -9,7 +9,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        .authorInfo{
+        .LoggedinUserInfo{
             display: flex;
             align-items: center;
             .authorImage {

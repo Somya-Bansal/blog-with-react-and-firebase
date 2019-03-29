@@ -3,7 +3,7 @@ import firebase, { auth, provider } from "../../config/firebase"
 
 import "./globalStyles.scss"
 import Layout from "../../components/Layout/layout"
-import AuthorInfo from "../../components/AuthorInfo/authorInfo"
+import LoggedinUserInfo from "../../components/LoggedinUserInfo/loggedinUserInfo"
 import BlogCardContainer from "../../components/BlogCardContainer/blogCardContainer"
 import Form from "../../components/Form/form"
 import NeedLogin from "../../components/NeedLogin/needLogin"
@@ -40,7 +40,7 @@ class App extends Component {
                 {this.state.isLoaded ?
                     (this.props.currentUser ?
                         <>
-                            <AuthorInfo logoutHandle={this.logout} user={this.props.currentUser}></AuthorInfo>
+                            <LoggedinUserInfo logoutHandle={this.logout} user={this.props.currentUser}></LoggedinUserInfo>
                             <Form db={firebase} user={this.props.currentUser}></Form>
                             <BlogCardContainer db={firebase} loggedInUser={this.props.currentUser}></BlogCardContainer>
                         </>
