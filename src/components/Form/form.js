@@ -60,6 +60,7 @@ class Form extends Component {
             body: '',
             authorName: ''
         });
+
     }
     render () {
         const {title, body, authorName} = this.state;
@@ -115,7 +116,7 @@ class Form extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        currentUser: state.currentUser
+        currentUser: state.currentUser,
     };
 }
 const mapDispatchToProps = (dispatch) => {

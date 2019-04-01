@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import firebase, { auth, provider } from "../../config/firebase"
+import { auth, provider } from "../../config/firebase"
 
 import "./globalStyles.scss"
 import Layout from "../../components/Layout/layout"
@@ -25,12 +25,7 @@ class App extends Component {
             this.setState({
                 isLoaded: true
             })
-            // console.log("FROM component did mount before action call");
-            // console.log(this.props.currentUser);
             this.props.setCurrentUser(user);
-            // console.log("After action call");
-            // console.log(this.props.currentUser);
-
         });
     }
     login() {
@@ -48,7 +43,7 @@ class App extends Component {
                         <>
                             <LoggedinUserInfo logoutHandle={this.logout} user={this.props.currentUser}></LoggedinUserInfo>
                             <Form></Form>
-                            <BlogCardContainer db={firebase} loggedInUser={this.props.currentUser}></BlogCardContainer>
+                            <BlogCardContainer loggedInUser={this.props.currentUser}></BlogCardContainer>
                         </>
                         :
                             <NeedLogin loginHandle={this.login}></NeedLogin>
