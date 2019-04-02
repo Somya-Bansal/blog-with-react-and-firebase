@@ -14,7 +14,7 @@ class BlogCardContainer extends React.Component {
             <div className={styles.container}>
                 {this.props.blogPosts.map((blogPost) => {
                     return(
-                        <BlogCard key={blogPost.id} cardState={blogPost} loggedInUser={this.props.loggedInUser}></BlogCard>
+                        <BlogCard key={blogPost.id} cardState={blogPost}></BlogCard>
                     )
                 })}
             </div>
@@ -22,7 +22,7 @@ class BlogCardContainer extends React.Component {
     }
 }
 const mapStateToProps = (state, ownProps) => {
-    console.log(state.blogPosts);
+    // console.log(state.blogPosts);
     return {
         blogPosts: state.blogPosts
     };

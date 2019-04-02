@@ -44,7 +44,7 @@ class CommentsBox extends React.Component {
                         <CommentCard key={comment.id} cardState={comment}></CommentCard>
                     )
                 })}
-                <CommentForm postState={this.props.postState} loggedInUser={this.props.loggedInUser} commentCount={this.props.commentCount}></CommentForm>
+                <CommentForm postState={this.props.postState} commentCount={this.props.commentCount}></CommentForm>
             </div>
         );
     }

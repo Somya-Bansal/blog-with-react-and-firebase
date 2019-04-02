@@ -39,7 +39,7 @@ class BlogPostPage extends React.Component {
             return (
                 <Layout>
                     <div className={styles.blogPostPage}>
-                        <BlogPost postState={this.props.location.state} loggedInUser={this.state.loggedInUser}></BlogPost>
+                        <BlogPost postState={this.props.location.state}></BlogPost>
                         {/* <Sidebar></Sidebar> */}
                     </div>
                 </Layout>

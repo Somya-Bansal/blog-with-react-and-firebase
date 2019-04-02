@@ -1,6 +1,6 @@
 import React from 'react'
 import firebase from '../../config/firebase'
-
+import { connect } from 'react-redux';
 import styles from './commentsContainer.module.scss'
 import CommentsBox from '../../components/CommentsBox/commentsBox'
 
@@ -10,7 +10,7 @@ class CommentsContainer extends React.Component {
         super(props);
         this.state = {
             showCommentBox: false,
-            userId: this.props.loggedInUser.userEmail,
+            userId: this.props.currentUser.email,
             upvotes: 0,
             downvotes: 0,
             upvoted: false,
@@ -136,9 +136,19 @@ class CommentsContainer extends React.Component {
                            {this.state.commentCount} Comments
                     </button>
                 </div>
-                {this.state.showCommentBox ? <CommentsBox postState={this.props.postState} loggedInUser={this.props.loggedInUser} commentCount={this.state.commentCount}/> : null}
+                {this.state.showCommentBox ? <CommentsBox postState={this.props.postState} commentCount={this.state.commentCount}/> : null}
             </>
         )
     }
 }
-export default CommentsContainer;
+const mapStateToProps = (state, ownProps) => {
+    return{
+        currentUser: state.currentUser
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CommentsContainer)

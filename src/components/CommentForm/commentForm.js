@@ -1,7 +1,6 @@
 import React from 'react'
 import firebase from "../../config/firebase"
-
-
+import { connect } from 'react-redux';
 import styles from './commentForm.module.scss'
 import Button from '../../components/Button/button'
 
@@ -31,10 +30,10 @@ class CommentForm extends React.Component {
         const postRef = firebase.database().ref('posts/' + postId);
 
         const comment = {
-            commentor: this.props.loggedInUser.username,
+            commentor: this.props.currentUser.displayName,
             commentTimeStamp: today,
             commentBody: this.state.commentBody,
-            commentorAvatar: this.props.loggedInUser.userImageURL
+            commentorAvatar: this.props.currentUser.photoURL
         }
         let updatedCommentCount = this.props.commentCount + 1;
         postRef.update({
@@ -64,4 +63,14 @@ class CommentForm extends React.Component {
         )
     }
 }
-export default CommentForm
+const mapStateToProps = (state, ownProps) => {
+    return{
+        currentUser: state.currentUser
+    }
+}
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(CommentForm);

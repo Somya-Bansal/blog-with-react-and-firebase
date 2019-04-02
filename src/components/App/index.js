@@ -35,7 +35,6 @@ class App extends Component {
         auth.signOut();
     }
     render() {
-        // console.log("FROM RENDER")
         return (
             <Layout>
                 {this.state.isLoaded ?
@@ -43,7 +42,7 @@ class App extends Component {
                         <>
                             <LoggedinUserInfo logoutHandle={this.logout} user={this.props.currentUser}></LoggedinUserInfo>
                             <Form></Form>
-                            <BlogCardContainer loggedInUser={this.props.currentUser}></BlogCardContainer>
+                            <BlogCardContainer></BlogCardContainer>
                         </>
                         :
                             <NeedLogin loginHandle={this.login}></NeedLogin>
